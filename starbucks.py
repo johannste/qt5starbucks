@@ -43,12 +43,18 @@ class STARBUCKS(QMainWindow):
         starbucks.show()
 
     def order_del(self):
-        Drink.bt1 = 0
-        Drink.bt2 = 0
-        Drink.bt3 = 0
-        Drink.bt4 = 0
-        Drink.bt5 = 0
-        Drink.bt6 = 0
+        drink.bt1 = 0
+        drink.bt2 = 0
+        drink.bt3 = 0
+        drink.bt4 = 0
+        drink.bt5 = 0
+        drink.bt6 = 0
+        food.bt1 = 0
+        food.bt2 = 0
+        food.bt3 = 0
+        seckill.bt1 = 0
+        seckill.bt2 = 0
+        seckill.bt3 = 0
         for i in range(starbucks.ui_order.tableWidget.rowCount()):
             starbucks.ui_order.tableWidget.removeRow(0)
         self.ui_order.l_balance_2.setText(str(self.balance))
@@ -124,14 +130,14 @@ class Drink(QWidget):
         # 按钮绑定方法
         pb_affogato = self.UiDrink.pbOrder_1
         pb_affogato.clicked.connect(self.order_affogato)
-        btn_chicken = self.UiDrink.pbOrder_2
-        btn_chicken.clicked.connect(self.order_cold_brew_malt)
-        btn_fries = self.UiDrink.pbOrder_3
-        btn_fries.clicked.connect(self.order_cold_brew_float)
-        btn_tea = self.UiDrink.pbOrder_4
-        btn_tea.clicked.connect(self.order_instore_nitro_cold_brew_float)
-        btn_ice = self.UiDrink.pbOrder_5
-        btn_ice.clicked.connect(self.order_vanilla_flavor_sweet_cream_cold_brew)
+        btn_cold_brew_malt = self.UiDrink.pbOrder_2
+        btn_cold_brew_malt.clicked.connect(self.order_cold_brew_malt)
+        btn_cold_brew_float = self.UiDrink.pbOrder_3
+        btn_cold_brew_float.clicked.connect(self.order_cold_brew_float)
+        btn_instore_nitro_cold_brew_float = self.UiDrink.pbOrder_4
+        btn_instore_nitro_cold_brew_float.clicked.connect(self.order_instore_nitro_cold_brew_float)
+        btn_vanilla_flavor_sweet_cream_cold_brew = self.UiDrink.pbOrder_5
+        btn_vanilla_flavor_sweet_cream_cold_brew.clicked.connect(self.order_vanilla_flavor_sweet_cream_cold_brew)
         btn_return = self.UiDrink.pbOrder_back
         btn_return.clicked.connect(self.drink_show)
 
@@ -194,6 +200,7 @@ class Drink(QWidget):
         if self.bt6 > 1:
             for row_index in range(starbucks.ui_order.tableWidget.rowCount()):
                 # 获取tableWidget的所有名称，并放入name列表
+                print(starbucks.ui_order.tableWidget.item(row_index, 0).text())
                 name.append(starbucks.ui_order.tableWidget.item(row_index, 0).text())
             if '阿馥奇朵™' in name:
                 # 重新设置该行的数量和价格
