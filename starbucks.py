@@ -77,14 +77,11 @@ class STARBUCKS(QMainWindow):
                 self.num = []
                 self.new_num = []
                 self.order_del()
-            elif self.balance < (self.money - self.count):
-                QMessageBox.information(self, "对不起", "您的会员储值卡余额不足！", QMessageBox.Yes)
-                self.coupons += 1
             else:
                 QMessageBox.information(self, "交易失败！", QMessageBox.Yes)
 
     def order_tip(self):
-        with open("tip.log", "a+", 'utf-8') as f:
+        with open("tip.log", "a+", encoding='utf-8') as f:
             for row_index in range(starbucks.ui_order.tableWidget.rowCount()):
                 for column_index in range(starbucks.ui_order.tableWidget.columnCount()):
                     f.write(starbucks.ui_order.tableWidget.item(row_index, column_index).text() + "\n")
